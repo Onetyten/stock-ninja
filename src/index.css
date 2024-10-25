@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+
+
+
+
+@layer components{
+    .custom-scrollbar::-webkit-scrollbar{
+        width:4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track{
+        background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb{
+        background-color: darkolivegreen;
+        width: 5px;
+        border-radius: 10px;
+    }
+}
+
+html{
+    background-color: #161e1a;
+}
