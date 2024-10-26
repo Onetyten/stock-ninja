@@ -27,6 +27,8 @@ const MyProvider = ({children})=>{
     const [SearchInput,setSearchInput] = useState("AAPL")
     const [SearchResult,setSearchResult] = useState("")
     const [SearchLoading,setSearchLoading] = useState(true)
+    const [showSidebar,setShowSidebar] = useState(false)
+
 
 
     useEffect(()=>{
@@ -39,6 +41,10 @@ const MyProvider = ({children})=>{
       });
 
     },[SearchInput])
+
+   function handleShowSideBar(){
+    setShowSidebar(!showSidebar)
+   }
 
 
 
@@ -154,7 +160,7 @@ const MyProvider = ({children})=>{
 
     
     return(
-        <ApiInfo.Provider value={{SearchInput,setSearchInput,SearchResult,setSearchResult, mockSearchResults,mockStockQuote,mockHistoricalData,mockCompanyDetails,convertDateToUnixTimeStamp,ConverUnixTimeStampToDate,createDate}}>
+        <ApiInfo.Provider value={{SearchInput,setSearchInput,SearchResult,setSearchResult, mockSearchResults,mockStockQuote,mockHistoricalData,mockCompanyDetails,convertDateToUnixTimeStamp,ConverUnixTimeStampToDate,createDate,handleShowSideBar,showSidebar,setShowSidebar}}>
             {children}
         </ApiInfo.Provider>
     )
