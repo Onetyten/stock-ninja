@@ -8,6 +8,7 @@ import Nav from './Components/Nav'
 import SideBar from './Components/SideBar'
 import { MyProvider } from './APIS/Context'
 import { ApiInfo } from './APIS/Context'
+import WatchList from './Components/WatchList'
 
 
 
@@ -27,8 +28,11 @@ function App() {
           <div className='row-span-3 mt-2'>
             <Details/>
           </div>
-          <div>
+          <div  className='row-span-3 mt-2'>
             <Chart/>
+          </div>
+          <div>
+            <WatchList/>
           </div>
           
         </div>
