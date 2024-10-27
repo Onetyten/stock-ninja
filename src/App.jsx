@@ -21,7 +21,12 @@ function App() {
           <Nav/>
         </div>
         <div className='grid w-full min-h-screen grid-cols-1 md:grid-cols-3 auto-rows-[70px] auto-cols-fr gap-6 font-quicksandrelative'>
-          <Header showSide ={showSide} setShowSide = {setShowSide}/>
+          <div className='row-span-2'>
+            <Header showSide ={showSide} setShowSide = {setShowSide}/>
+          </div>
+          <div className='row-span-3 mt-2'>
+            <Details/>
+          </div>
           
         </div>
       </main>

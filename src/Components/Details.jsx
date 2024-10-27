@@ -3,13 +3,12 @@ import Card from '../Components/Card'
 import { ApiInfo } from '../APIS/Context'
 
 export default function Details() {
-  const{mockCompanyDetails} = useContext(ApiInfo)
+  const{mockCompanyDetails,companyProfile,setCompanyProfile} = useContext(ApiInfo)
   const detailList = {
     name : "Name",
     country :"Country",
     currency :"Currency",
     exchange : "Exchange",
-    ipo: "IPO Date",
     marketCapitalization:"Market Capitalization",
     finnhubIndustry:"Industry"
 
@@ -17,23 +16,27 @@ export default function Details() {
   const convertToBillion=(number)=>{
     return (number/1000).toFixed(2);
   }
+
+  if (!companyProfile){
+    return(
+      Loading
+    )
+  }
   return (
-    <Card>
-      <ul className='w-full h-full flex flex-col justify-between divide-y-2 no-underline list-none'>
+      <div className='h-full flex flex-col justify-between p-3 text-xs bg-my-Charcoal m-3  bg-opacity-35 rounded-xl -z-50'>
         {Object.keys(detailList).map((item)=>{
           return(
-            <li key={item } className='flex-1 flex justify-between items-center no-underline'>
-              <span className='no-underline'>
+            <div key={item } className='flex-1 flex justify-between items-center'>
+              <div className='text-my-green-light text'>
                 {detailList[item]}
-              </span>
-              <span className='no-underline'>
-                {item==="marketCapitalization" ? `${convertToBillion(mockCompanyDetails[item])}B` : mockCompanyDetails[item]}
-              </span>
-            </li>
+              </div>
+              <div className='no-underline overflow-hidden'>
+                {item==="marketCapitalization" ? `${convertToBillion(companyProfile[item])}B` : companyProfile[item]}
+              </div>
+            </div>
           )
         })}
-      </ul>
+      </div>
 
-    </Card>
   )
 }

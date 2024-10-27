@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ApiInfo } from '../APIS/Context'
 import SearchResults from './SearchResults'
 
@@ -6,21 +6,32 @@ import SearchResults from './SearchResults'
 export default function Search() {
     const{mockSearchResults, SearchInput,setSearchInput,SearchResult,setSearchResult,SearchLoading} = useContext( ApiInfo)
     const[input,setInput] = useState("")
+    const[previnput,setPrevInput] = useState("")
+    const[preSearch,setPrevSearch] = useState("")
     const[bestMatches, setBestMatches] = useState([])
 
 
-    const clear = ()=>{
-        setSearchInput("")
 
-        // setSearchResult([])
+    const clear = ()=>{
+        setInput("")
+        setSearchInput(input)
+        setBestMatches([])
     }
 
     const updateBestMatches = ()=>{
+
         setSearchInput(input)
+        if (setSearchResult!=null){
         setBestMatches(SearchResult.result)
+
+        }
         console.log(SearchResult.results)
 
     }
+
+    useEffect(()=>{
+      setBestMatches(SearchResult.result)
+    },[SearchResult])
 
 
 
