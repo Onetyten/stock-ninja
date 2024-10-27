@@ -19,7 +19,10 @@ export default function Details() {
 
   if (!companyProfile){
     return(
-      Loading
+      <p>
+        Loading
+
+      </p>
     )
   }
   return (

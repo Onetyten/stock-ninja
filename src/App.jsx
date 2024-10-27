@@ -27,6 +27,9 @@ function App() {
           <div className='row-span-3 mt-2'>
             <Details/>
           </div>
+          <div>
+            <Chart/>
+          </div>
           
         </div>
       </main>

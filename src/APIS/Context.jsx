@@ -30,6 +30,9 @@ const MyProvider = ({children})=>{
     const [showSidebar,setShowSidebar] = useState(false)
     const [currentSymbol,setCurrentSymbol] = useState("AAPL")
     const [companyProfile,setCompanyProfile] = useState([])
+    const [stockQuote,setStockQuote] = useState()
+
+    
 
 
 
@@ -49,11 +52,19 @@ const MyProvider = ({children})=>{
 
     useEffect(()=>{
       finnhubClient.companyProfile2({'symbol': currentSymbol}, (error, companydata, response) => {
-      setCompanyProfile(companydata)
-        
-        
+      setCompanyProfile(companydata)});
+
+      finnhubClient.quote(currentSymbol, (error, quotedata, response) => {
+        console.log(quotedata)
+        setStockQuote(quotedata)
       });
+
+      finnhubClient.companyBasicFinancials("AAPL", "all", (error, data, response) => {
+        console.log(data)
+      });
+
     },[currentSymbol])
+
 
 
 
@@ -176,7 +187,7 @@ const MyProvider = ({children})=>{
 
     
     return(
-        <ApiInfo.Provider value={{SearchInput,setSearchInput,SearchResult,setSearchResult, mockSearchResults,mockStockQuote,mockHistoricalData,mockCompanyDetails,convertDateToUnixTimeStamp,ConverUnixTimeStampToDate,createDate,handleShowSideBar,showSidebar,setShowSidebar,SearchLoading,currentSymbol,setCurrentSymbol,companyProfile,setCompanyProfile}}>
+        <ApiInfo.Provider value={{SearchInput,setSearchInput,SearchResult,setSearchResult, mockSearchResults,mockStockQuote,mockHistoricalData,mockCompanyDetails,convertDateToUnixTimeStamp,ConverUnixTimeStampToDate,createDate,handleShowSideBar,showSidebar,setShowSidebar,SearchLoading,currentSymbol,setCurrentSymbol,companyProfile,setCompanyProfile,stockQuote,setStockQuote}}>
             {children}
         </ApiInfo.Provider>
     )

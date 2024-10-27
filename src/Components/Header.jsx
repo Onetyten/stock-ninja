@@ -12,7 +12,6 @@ export default function Header() {
     <div>
       <div className=' p-3 bg-my-Charcoal m-3 relative bg-opacity-35 rounded-xl backdrop-blur-3xl '>
          <h1 className='text-lg text-my-green-light'>
-            {console.log(companyProfile)}
             {companyProfile.name || "Unavailable"}
          </h1>
          <div className='flex justify-around items-center gap-6'>
