@@ -49,7 +49,7 @@ export default function Search() {
       }}/>
       {input&&(<i className='fa-x fa-solid absolute right-4 text-my-mossy-green m-1' onClick={clear}></i>)}
       {/* {input&&bestMatches.length>0?<SearchResults results={bestMatches}/>:null} */}
-      {input&&bestMatches.length>0?<SearchResults results={bestMatches}/>:null}
+      {input&&bestMatches?.length>0?<SearchResults results={bestMatches}/>:null}
 
 
     </div>

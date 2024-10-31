@@ -3,7 +3,7 @@ import Card from '../Components/Card'
 import { ApiInfo } from '../APIS/Context'
 
 export default function Details() {
-  const{mockCompanyDetails,companyProfile,setCompanyProfile} = useContext(ApiInfo)
+  const{companyProfile} = useContext(ApiInfo)
   const detailList = {
     name : "Name",
     country :"Country",
@@ -29,7 +29,7 @@ export default function Details() {
       <div className='h-full flex flex-col justify-between p-3 text-xs bg-my-Charcoal m-3  bg-opacity-35 rounded-xl -z-50'>
         {Object.keys(detailList).map((item)=>{
           return(
-            <div key={item } className='flex-1 flex justify-between items-center'>
+            <div key={item } className='flex-1 flex justify-between items-center pb-5'>
               <div className='text-my-green-light text'>
                 {detailList[item]}
               </div>

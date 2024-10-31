@@ -31,8 +31,24 @@ const MyProvider = ({children})=>{
     const [currentSymbol,setCurrentSymbol] = useState("AAPL")
     const [companyProfile,setCompanyProfile] = useState([])
     const [stockQuote,setStockQuote] = useState()
+
     const [salesPerShare,setSalesPerShare] = useState([])
-    const [salesdiff,setSalesDiff] = useState(0)
+    const [earningPerShare,setEarningPerShare] = useState([])
+    const [totalRatio,setTotalRatio] = useState([])
+    const [roa,setRoa] = useState([])
+    const [cashRatio,setCashRatio] = useState([])
+    const [grossMargin,setGrossMargin] = useState([])
+    const [priceEarning,setPriceEarning] = useState([])
+    const [news,setNews] = useState([])
+
+
+
+
+    // eps
+
+    // watchlist data arrays
+    const [watchList,setWatchList] = useState([])
+    const [watchListData,setWatchListData] = useState([])
 
     
 
@@ -42,7 +58,6 @@ const MyProvider = ({children})=>{
         setSearchLoading(true)
         // console.log("loading: ",SearchLoading)
         finnhubClient.symbolSearch(SearchInput, (error, data, response) => {
-        console.log(data)
         setSearchResult(data)
         setSearchLoading(false)
       });
@@ -57,18 +72,49 @@ const MyProvider = ({children})=>{
       setCompanyProfile(companydata)});
 
       finnhubClient.quote(currentSymbol, (error, quotedata, response) => {
-        console.log(quotedata)
         setStockQuote(quotedata)
       });
 
       finnhubClient.companyBasicFinancials(currentSymbol, "all", (error, data, response) => {
-        console.log(data.series.annual.salesPerShare)
-        setSalesPerShare(data.series.annual.salesPerShare)
-        setSalesDiff(salesPerShare[1]<salesPerShare[salesPerShare.length-1])
-        console.log(salesdiff)
+        setSalesPerShare(data?.series.annual.salesPerShare)
+        setEarningPerShare(data?.series.annual.eps)
+        setTotalRatio(data?.series.annual.totalRatio)
+        setRoa(data?.series.annual.roa)
+        setCashRatio(data?.series.annual.cashRatio)
+        setGrossMargin(data?.series.annual.grossMargin)
+        setPriceEarning(data?.series.annual.pe)
+        console.log(data)
       });
 
+      
+      finnhubClient.companyNews(currentSymbol, "2024-09-01", "2024-10-01", (error, data, response) => {
+        setNews(data)
+        console.log(news)
+      });
+
+
     },[currentSymbol])
+
+
+    useEffect(()=>{
+      getWatchList()
+    },[watchList])
+
+
+    function getWatchList(){
+      if(companyProfile.length ===0){
+        return
+      }
+      const data = {
+        watchdata: companyProfile,
+        watchquote:stockQuote,
+        watchChart:salesPerShare
+      }
+      if (watchList.includes(data.watchdata.ticker)){
+        setWatchListData(prevData=>[...prevData,data])
+        console.log(watchListData)
+      }  
+    }
 
 
 
@@ -81,7 +127,7 @@ const MyProvider = ({children})=>{
 
     
     return(
-        <ApiInfo.Provider value={{SearchInput,setSearchInput,SearchResult,setSearchResult,handleShowSideBar,showSidebar,setShowSidebar,SearchLoading,currentSymbol,setCurrentSymbol,companyProfile,setCompanyProfile,stockQuote,setStockQuote,salesPerShare,setSalesPerShare}}>
+        <ApiInfo.Provider value={{SearchInput,setSearchInput,SearchResult,setSearchResult,handleShowSideBar,showSidebar,setShowSidebar,SearchLoading,currentSymbol,setCurrentSymbol,companyProfile,setCompanyProfile,stockQuote,setStockQuote,salesPerShare,setSalesPerShare,watchList,setWatchList,watchListData,setWatchListData,earningPerShare,totalRatio,roa,cashRatio,grossMargin,priceEarning,news,setNews}}>
             {children}
         </ApiInfo.Provider>
     )

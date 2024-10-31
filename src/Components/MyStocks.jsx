@@ -18,8 +18,6 @@ export default function MyStocks({currency}) {
         setPrice(Math.floor(stockQuote.c) )
         setChange(stockQuote.d)
         setChangePercent(stockQuote.dp)
-        console.log(companyProfile.currency
-        )
       }
       
     },[stockQuote]
