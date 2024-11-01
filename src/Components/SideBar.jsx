@@ -11,7 +11,7 @@ export default function SideBar() {
   };
 
   return (
-    <div className='flex w-full md:w-2/4 justify-between bg-gray-800 p-9 bg-opacity-45 rounded-3xl'>
+    <div className='flex w-full md:w-2/4 justify-between bg-gray-800 p-9 md:p-3 bg-opacity-45 rounded-3xl'>
       <Link to="/" onClick={() => handleNavClick("Home")}>
         <NavIcons Name="Home" faIcons="fa-solid fa-house" isActive={activeNav === "Home"} />
       </Link>

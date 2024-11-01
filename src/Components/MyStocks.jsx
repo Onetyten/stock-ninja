@@ -27,7 +27,7 @@ export default function MyStocks({currency}) {
 
   return (
       <div className='relative pt-6'>
-        <div className='w-full h-full flex flex-col gap-6 items-center justify-center'>
+        <div className='w-full h-full flex flex-col gap-6 md:gap-2 items-center justify-center'>
           <div className='text-3xl flex items-end gap-1 font-semibold'>
              {price||"0"}
             <span className='text-sm text-neutral-400 pb-1'>{companyProfile?.currency}</span>

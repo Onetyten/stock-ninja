@@ -5,7 +5,7 @@ export default function NavIcons(props) {
   const { Name, faIcons, isActive } = props;
 
   return (
-    <div className='flex flex-col justify-center items-center gap-3'>
+    <div className='flex flex-col justify-center items-center gap-3 md:gap-2'>
       <div>
         <i
           className={`${faIcons} text-white hover:bg-lime-400 active:bg-lime-400 text-lg p-3 px-4 rounded-full ${
