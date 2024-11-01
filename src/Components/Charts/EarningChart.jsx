@@ -11,16 +11,13 @@ export default function EarningChart() {
 
 
   if (!earningPerShare || earningPerShare.length === 0) {
-    return (
-      <div className='text-white bg-black rounded-2xl h-64 font-semibold text-2xl flex justify-center items-center'>
-          No chart data available
-      </div>);
+    return <div>Loading chart data...</div>;
   }
 
 
   return (
   
-      <div className='m-3 h-64 bg-black rounded-xl px-2 py-7 '>
+      <div className='m-3 h-64  md:h-72 bg-black rounded-xl px-2 hover:border-4 hover:shadow-md hover:border-white py-7 '>
         <ResponsiveContainer width="100%">
           <div className='flex w-full justify-center'>
             <p className='text-lime-400 font-semibold text-xl'>Earnings per share</p>

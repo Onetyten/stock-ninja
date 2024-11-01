@@ -8,7 +8,7 @@ export default function Details() {
     name : "Name",
     country :"Country",
     currency :"Currency",
-    exchange : "Exchange",
+    // exchange : "Exchange",
     marketCapitalization:"Market Capitalization",
     finnhubIndustry:"Industry"
 
@@ -19,14 +19,14 @@ export default function Details() {
 
   if (!companyProfile){
     return(
-      <div className='text-white bg-black rounded-2xl h-64 font-semibold text-2xl flex justify-center items-center'>
+      <div className='text-white bg-black rounded-2xl h-64  font-semibold text-2xl flex justify-center items-center'>
         Company Details
 
       </div>
     )
   }
   return (
-      <div className='h-full flex flex-col justify-between p-3 text-sm bg-black m-3 rounded-xl -z-50'>
+      <div className='h-full md:h-72 md:translate-y-2 flex flex-col justify-between p-3 text-sm bg-black m-3 rounded-xl -z-50'>
         {Object.keys(detailList).map((item)=>{
           return(
             <div key={item } className='flex-1 flex justify-between items-center pb-5'>

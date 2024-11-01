@@ -38,7 +38,7 @@ export default function Search() {
   return ( 
     
 
-    <div className='flex items-center m-3 relative mt-8 text-black text-lg '>
+    <div className='flex items-center m-3 relative mt-8 text-black text-lg md:w-full '>
       <input type="text" value={input} placeholder='Search Stock... ' className='w-full px-4 rounded-full py-4 focus:outline-none backdrop-blur-lg text-sm font-semibold' onChange={(event) =>{
         setInput(event.target.value)
         

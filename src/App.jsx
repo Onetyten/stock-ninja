@@ -19,7 +19,7 @@ function App() {
   return (
     <Router>
       <MyProvider>
-        <main className='w-screen flex flex-col md:flex-row min-h-screen pb-9 bg-gradient-to-tr from-white to-slate-300 text-white'>
+        <main className='max-w-screen overflow-x-hidden flex flex-col min-h-screen pb-9 bg-gradient-to-tr from-white to-slate-300 text-white'>
           <div className=''>
             <Header showSide ={showSide} setShowSide = {setShowSide}/>
           </div>

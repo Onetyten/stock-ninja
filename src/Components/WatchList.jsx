@@ -37,23 +37,23 @@ export default function WatchList() {
 
   return (
     <div className='h-full flex flex-col justify-between px-3 py-10 text-xs text-black  m-3  bg-opacity-35 rounded-xl -z-50'>
-        <p className='text-lg font-bold'>
+        <p className='text-lg md:text-2xl font-bold'>
             Watchlist
         </p>
 
         {
           watchListData.map((item)=>{
             return(
-                  <div className='flex justify-around items-center bg-white p-4 rounded-lg border-2 border-black' onClick={()=>{
+                  <div className='flex justify-around items-center bg-white hover:bg-slate-300 p-4 rounded-lg border-2 border-black' onClick={()=>{
                     setCurrentSymbol(item?.watchdata?.ticker)
                     console.log(currentSymbol)
                   }}>
                   <div className='flex text-black flex-col justify-start gap-3'>
-                    <p className='text-md font-bold w-28'>{item?.watchdata?.name}</p>
+                    <p className='text-md font-bold w-28 md:w-64 md:text-lg'>{item?.watchdata?.name}</p>
                     <div className='flex justify-start items-center'>
-                      <p className='mr-3'>{item?.watchdata?.ticker}</p>
+                      <p className='mr-3 md:text-lg'>{item?.watchdata?.ticker}</p>
                       <i
-                        className="fa-regular fa-eye z-100"
+                        className="fa-regular fa-eye z-100 md:text-xl"
                         onClick={() => {
                           const tickerToRemove = item.watchdata.ticker;
 
@@ -75,8 +75,8 @@ export default function WatchList() {
                     
                   </div>
 
-                  <div className=''>
-                    <ResponsiveContainer width={50} height={50}>
+                  <div className=' w-12 md:w-80'>
+                    <ResponsiveContainer height={50}>
                       <AreaChart width={500} height={400} data={item.watchChart}>
                             <Area dataKey={"v"} type="monotone"  stroke={`${item?.watchChart[0]?.v>item?.watchChart[item?.watchChart.length-1]?.v? "#a3e635":"#ff5e54"}`}  strokeWidth={2} fill= {"#2b4e33"} fillOpacity={0} />
                         </AreaChart>
@@ -85,12 +85,12 @@ export default function WatchList() {
                   </div>
 
                   
-                  <div className='flex flex-col'>
+                  <div className='flex flex-col text-center'>
                       <div className='mb-3'>
-                        <p className='text-md text-black font-semibold'>${Math.floor(item?.watchquote?.c )|| "0"}</p>
+                        <p className='text-md text-black font-semibold md:text-xl'>${Math.floor(item?.watchquote?.c )|| "0"}</p>
                       </div>
                       <div>
-                        <p className={`${item?.watchquote?.dp<0 ? "text-my-orange" : "text-my-green-light"}`}>{Math.floor(item?.watchquote?.dp) || "0"}%</p>
+                        <p className={`${item?.watchquote?.dp<0 ? "text-my-orange" : "text-my-green-light"} md:text-md`}>{Math.floor(item?.watchquote?.dp) || "0"}%</p>
                       </div>
                   </div>
                 </div>

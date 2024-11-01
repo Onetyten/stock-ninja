@@ -26,7 +26,7 @@ export default function Header() {
   
   return (
     <div>
-      <div className=' p-3 bg-black flex flex-col rounded-b-xl relative backdrop-blur-3xl '>
+      <div className=' p-3 bg-black flex flex-col rounded-b-xl relative backdrop-blur-3xl w-full '>
           <div className='flex items-center w-full justify-center'>
             <h1 className='text-2xl font-semibold text-white'>
                 {companyProfile?.name || "Unavailable"} 

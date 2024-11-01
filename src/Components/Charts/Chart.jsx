@@ -23,7 +23,7 @@ export default function Chart() {
 
   return (
   
-      <div className='m-3 h-64 bg-black rounded-xl px-2 py-7 '>
+      <div className='m-3 h-64 md:h-72 bg-black hover:border-4 hover:shadow-md hover:border-white rounded-xl px-2 md:py-5 py-7 '>
         <ResponsiveContainer width="100%">
           <div className='flex w-full justify-center'>
             <p className='text-lime-400 font-semibold text-xl'>Sales per share</p>
