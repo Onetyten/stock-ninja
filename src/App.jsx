@@ -1,7 +1,6 @@
 import { useState,useContext} from 'react'
 import Header from './Components/Header'
 
-import Nav from './Components/Nav'
 import SideBar from './Components/SideBar'
 import { MyProvider } from './APIS/Context'
 import { ApiInfo } from './APIS/Context'
@@ -20,11 +19,8 @@ function App() {
   return (
     <Router>
       <MyProvider>
-        <main className='w-screen flex flex-col md:flex-row min-h-screen bg-gradient-to-tr from-my-Charcoal to-my-mossy-green text-white '>
-          <div className='w-screen h-16 md:w-2/6 md:min-h-screen '>
-            <Nav/>
-          </div>
-          <div className='row-span-1 md:col-span-3'>
+        <main className='w-screen flex flex-col md:flex-row min-h-screen pb-9 bg-gradient-to-tr from-white to-slate-300 text-white'>
+          <div className=''>
             <Header showSide ={showSide} setShowSide = {setShowSide}/>
           </div>
 

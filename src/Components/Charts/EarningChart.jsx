@@ -11,20 +11,23 @@ export default function EarningChart() {
 
 
   if (!earningPerShare || earningPerShare.length === 0) {
-    return <div>Loading chart data...</div>;
+    return (
+      <div className='text-white bg-black rounded-2xl h-64 font-semibold text-2xl flex justify-center items-center'>
+          No chart data available
+      </div>);
   }
 
 
   return (
   
-      <div className='m-9 '>
-        <ResponsiveContainer width="100%" height={200}>
+      <div className='m-3 h-64 bg-black rounded-xl px-2 py-7 '>
+        <ResponsiveContainer width="100%">
           <div className='flex w-full justify-center'>
-            <p className='text-my-green-light'>Earnings per share</p>
+            <p className='text-lime-400 font-semibold text-xl'>Earnings per share</p>
           </div>
           <AreaChart width={500} height={400} data={earningPerShare} >
                 <Tooltip/>
-                <Area dataKey={"v"} type="monotone" stroke={`${earningPerShare[0].v>earningPerShare[earningPerShare.length-1].v? "#26c753":"#ff5e54"}`} strokeWidth={2} fill= {`${earningPerShare[0].v>earningPerShare[earningPerShare.length-1].v? "'#2b4e33'":"#ff5e54"}`}fillOpacity={0.3} />
+                <Area dataKey={"v"} type="monotone" stroke={`${earningPerShare[0].v>earningPerShare[earningPerShare.length-1].v? "#a3e635":"#ff5e54"}`} strokeWidth={2} fill= {`${earningPerShare[0].v>earningPerShare[earningPerShare.length-1].v? "#a3e635":"#ff5e54"}`}fillOpacity={0.3} />
 
                 <XAxis dataKey={"period"} tickFormatter={formatYear} reversed/>
                 

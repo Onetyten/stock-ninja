@@ -30,7 +30,7 @@ export default function Search() {
     }
 
     useEffect(()=>{
-      setBestMatches(SearchResult.result)
+      setBestMatches(SearchResult?.result)
     },[SearchResult])
 
 
@@ -38,8 +38,8 @@ export default function Search() {
   return ( 
     
 
-    <div className='flex items-center my-4 border-2 rounded-md relative w-full  border-my-Charcoal'>
-      <input type="text" value={input} placeholder='Search Stock... ' className='w-full px-4 py-2 focus:outline-none rounded-md bg-my-Dark-teal backdrop-blur-lg text-sm bg-opacity-60' onChange={(event) =>{
+    <div className='flex items-center m-3 relative mt-8 text-black text-lg '>
+      <input type="text" value={input} placeholder='Search Stock... ' className='w-full px-4 rounded-full py-4 focus:outline-none backdrop-blur-lg text-sm font-semibold' onChange={(event) =>{
         setInput(event.target.value)
         
       }} onKeyDown={(event)=>{

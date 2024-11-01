@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Card from './Card'
 import { ApiInfo } from '../APIS/Context'
+import SideBar from './SideBar'
 
 export default function MyStocks({currency}) {
   const [price,setPrice]= useState(10)
@@ -25,25 +26,27 @@ export default function MyStocks({currency}) {
 
 
   return (
-      <div className='relative'>
-        {/* <span className='absolute left-4 text-neutral-500 text-lg '>
-          {mockCompanyDetails.ticker}
-        </span> */}
-        <div className='w-full h-full flex items-center justify-between'>
-          <div className='text-3xl flex items-end gap-1'>
+      <div className='relative pt-6'>
+        <div className='w-full h-full flex flex-col gap-6 items-center justify-center'>
+          <div className='text-3xl flex items-end gap-1 font-semibold'>
              {price||"0"}
-            <span className='text-sm text-neutral-400 pb-1'>{companyProfile.currency
-            }</span>
+            <span className='text-sm text-neutral-400 pb-1'>{companyProfile?.currency}</span>
           </div>
+          
 
-          <span className={`text-sm flex items-end gap-2 ${change >0 ? "text-my-green-light" : "text-my-orange"} `}>
+          
+
+          <span className={`text-lg font-bold flex items-end  gap-2  bg-gray-800 p-3 rounded-full bg-opacity-45 ${change >0 ? "text-lime-400" : "text-my-orange"} `}>
             <i class={`fa-solid ${change > 0?"fa-sort-up":"fa-sort-down"}`}></i>
-           
             <span>
               {change}
               ({changePercent}%)
             </span>
           </span>
+
+          <SideBar/>
+
+
         </div>
       </div>
   )

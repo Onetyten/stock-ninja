@@ -11,7 +11,7 @@ import CompanyEarnings from './CompanyEarnings'
 export default function Analytics() {
   return (
     <div>
-        <div  className='row-span-3 mt-2 md:col-span-2 md:row-span-5'>
+        <div  className=' flex flex-col gap-3'>
             <CompanyEarnings/>
             <Chart/>
             <EarningChart/>

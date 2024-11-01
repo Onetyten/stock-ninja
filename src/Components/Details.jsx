@@ -19,21 +19,21 @@ export default function Details() {
 
   if (!companyProfile){
     return(
-      <p>
-        Loading
+      <div className='text-white bg-black rounded-2xl h-64 font-semibold text-2xl flex justify-center items-center'>
+        Company Details
 
-      </p>
+      </div>
     )
   }
   return (
-      <div className='h-full flex flex-col justify-between p-3 text-xs bg-my-Charcoal m-3  bg-opacity-35 rounded-xl -z-50'>
+      <div className='h-full flex flex-col justify-between p-3 text-sm bg-black m-3 rounded-xl -z-50'>
         {Object.keys(detailList).map((item)=>{
           return(
             <div key={item } className='flex-1 flex justify-between items-center pb-5'>
-              <div className='text-my-green-light text'>
+              <div className='text-white font-semibold'>
                 {detailList[item]}
               </div>
-              <div className='no-underline overflow-hidden'>
+              <div className='no-underline text-slate-300 overflow-hidden'>
                 {item==="marketCapitalization" ? `${convertToBillion(companyProfile[item])}B` : companyProfile[item]}
               </div>
             </div>
